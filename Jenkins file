@@ -1,0 +1,27 @@
+pipeline {
+  agent any
+
+  tools {
+    nodejs "node"
+  }
+
+  stages {
+    stage('Install Postman CLI') {
+      steps {
+        bat '''"C:\\Program Files\\PowerShell\\7\\pwsh.exe" -NoProfile -ExecutionPolicy Bypass -Command "& { [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://dl-cli.pstmn.io/install/win64.ps1')) }"'''
+      }
+    }
+
+    stage('Postman CLI Login') {
+      steps {
+        bat 'postman login --with-api-key PMAK-66afd483af5b8200010851ff-cda15ce614696ffbb355ea322bbfb78dae'
+      }
+    }
+
+    stage('Running collection') {
+      steps {
+        bat 'postman collection run "35687268-4d898d83-865a-412d-91aa-4a16e9da092f" -e "35687268-82e47fb7-7877-4a26-8fc9-7a594c702828"'
+      }
+    }
+  }
+}
