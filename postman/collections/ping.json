@@ -1,0 +1,406 @@
+{
+	"info": {
+		"_postman_id": "4d898d83-865a-412d-91aa-4a16e9da092f",
+		"name": "Coingecko Ping API Test cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35687268"
+	},
+	"item": [
+		{
+			"name": "Positive test cases",
+			"item": [
+				{
+					"name": "200 response",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"\r",
+									"pm.test(\"Status code is 200 (OK)\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.gecko_says).to.eql(\"(V3) To the Moon!\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"// Print response time to console\r",
+									"console.log(\"Response time: \" + pm.response.responseTime + \"ms\");"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "{{accept_header}}"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "{{x-cg-demo-api-key}}"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{path}}",
+							"host": [
+								"{{base_url}}{{path}}"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Negative test cases",
+			"item": [
+				{
+					"name": "401 missing API key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response contains 'missing api key' error\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"error\", \"missing api key\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "{{accept_header}}"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"disabled": true
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{path}}",
+							"host": [
+								"{{base_url}}{{path}}"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				},
+				{
+					"name": "404 not found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 (Not Found)\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Incorrect path. Please check https://www.coingecko.com/api/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"// Print response time to console\r",
+									"console.log(\"Response time: \" + pm.response.responseTime + \"ms\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "{{accept_header}}"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "{{x-cg-demo-api-key}}"
+							},
+							{
+								"key": "Cookie",
+								"value": "{{cookie}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v3/pinger",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"pinger"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				},
+				{
+					"name": "401 Invalid key",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body contains error details\", function () {\r",
+									"    const response = pm.response.json();\r",
+									"    pm.expect(response).to.have.property(\"status\");\r",
+									"    pm.expect(response.status).to.have.property(\"timestamp\");\r",
+									"    pm.expect(response.status).to.have.property(\"error_code\", 10002);\r",
+									"    pm.expect(response.status).to.have.property(\"error_message\", \"API Key Missing\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									"\r",
+									"// Print response time to console\r",
+									"console.log(\"Response time: \" + pm.response.responseTime + \"ms\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij11"
+							},
+							{
+								"key": "Cookie",
+								"value": "__cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v3/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ping"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				},
+				{
+					"name": "invalid method(post,put)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404 (Not Found)\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response body is correct\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.error).to.eql(\"Incorrect path. Please check https://www.coingecko.com/api/\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(3000);\r",
+									"});\r",
+									"\r",
+									"// Print response time to console\r",
+									"console.log(\"Response time: \" + pm.response.responseTime + \"ms\");\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij"
+							},
+							{
+								"key": "Cookie",
+								"value": "__cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v3/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ping"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				},
+				{
+					"name": "429 too many request(rate limiting)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const rateLimit = 30; // Adjust according to the API's rate limit\r",
+									"const requestsToSend = rateLimit + 1; // Send one more than the rate limit\r",
+									"const delayBetweenRequests = 100; // Delay between requests in milliseconds\r",
+									"\r",
+									"function sendRequest(i) {\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.coingecko.com/api/v3/ping',\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'accept': 'application/json',\r",
+									"            'x-cg-demo-api-key': 'CG-myU9466Mv71eAG2hpxuswkij',\r",
+									"            'Cookie': '__cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug; __cf_bm=eAlBU8ccpYOfx18sdI9ntwH5t61O4LL2R7XJIRFN2P4-1722782281-1.0.1.1-WidoS.fEz7GRY_uCpt5Vwd39u6dB9VhRygJBx2crUmmYnZx8s0kokyrviQCM8gdkd1QnC18Q_bPeXVKnsnEw7g'\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"        if (i === requestsToSend - 1) {\r",
+									"            pm.test(\"Status code is 429 (Rate Limit Exceeded)\", function () {\r",
+									"                pm.expect(res).to.have.status(429);\r",
+									"            });\r",
+									"        }\r",
+									"    });\r",
+									"}\r",
+									"\r",
+									"for (let i = 0; i < requestsToSend; i++) {\r",
+									"    setTimeout(() => sendRequest(i), i * delayBetweenRequests);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Rate limit exceeded test\", function () {\r",
+									"    \r",
+									"    const rateLimit = 30; \r",
+									"    const requestsToSend = rateLimit + 1;\r",
+									"\r",
+									"    \r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.coingecko.com/api/v3/ping',\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'accept': 'application/json',\r",
+									"            'x-cg-demo-api-key': 'CG-myU9466Mv71eAG2hpxuswkij',\r",
+									"            'Cookie': '__cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug; __cf_bm=eAlBU8ccpYOfx18sdI9ntwH5t61O4LL2R7XJIRFN2P4-1722782281-1.0.1.1-WidoS.fEz7GRY_uCpt5Vwd39u6dB9VhRygJBx2crUmmYnZx8s0kokyrviQCM8gdkd1QnC18Q_bPeXVKnsnEw7g'\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"        pm.test(\"Status code is 429 (Rate Limit Exceeded)\", function () {\r",
+									"            pm.expect(res).to.have.status(429);\r",
+									"        });\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij"
+							},
+							{
+								"key": "Cookie",
+								"value": "__cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/v3/ping",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v3",
+								"ping"
+							]
+						},
+						"description": "Generated from cURL: curl --location 'https://api.coingecko.com/api/v3/ping' \\\r\n--header 'accept: application/json' \\\r\n--header 'x-cg-demo-api-key: CG-myU9466Mv71eAG2hpxuswkij' \\\r\n--header 'Cookie: __cf_bm=5g2NFgKqQLDgLJx3Icwfvjoc5DG93n5ljPTexIJigTE-1722780633-1.0.1.1-5u3VmQeioPTgKwxfirbFu8iA.Jg2y835cr4Dm3t5EZgzkVZ5JVJ6QexAJFJD3UhUw1tL_j0dbe_0CpReNaiHug'"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
