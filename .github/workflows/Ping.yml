@@ -28,7 +28,7 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run "postman/collections/pins.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html
+        newman run "postman/collections/CoingeckoMarketAPITestCases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html
 
     - name: Upload report
       uses: actions/upload-artifact@v3
