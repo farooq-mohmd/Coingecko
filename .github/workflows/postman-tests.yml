@@ -26,7 +26,7 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run ./postman/collections/Coingecko Coin-id test cases.postman_collection.json -e ./postman/environments/Development.postman_environment.json --reporters cli,junit --reporter-junit-export ./postman-reports/junit-report.xml
+        newman run ./postman/collections/Coingecko/Coin-id test cases.postman_collection.json -e ./postman/environments/Development.postman_environment.json --reporters cli,junit --reporter-junit-export ./postman-reports/junit-report.xml
 
     - name: Archive Test Reports
       uses: actions/upload-artifact@v3  # Updated to latest version
