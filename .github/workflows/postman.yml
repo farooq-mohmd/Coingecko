@@ -12,15 +12,15 @@ jobs:
 
     steps:
 
-      uses: actions/checkout@v3
-      name: create dir
-      run: |
-            mkdir simpleartifact
+     - uses: actions/checkout@v3
+     - name: create dir
+        run: |
+              mkdir simpleartifact
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
+    - name: install Node
+      uses: actions/checkout@v3
       with:
-        node-version: '17'
+        node-version: '17.x'
 
     - name: Install Newman and htmlextra
       run: |
@@ -29,10 +29,10 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run "postman/collections/CoingeckoCoin-idtestcases.postman_collection.json" -e ./postman/environments/YourEnvironment.postman_environment.json --reporters cli,htmlextra --reporter-htmlextra-export ./postman-reports/html-report.html
+        newman run "postman/collections/CoingeckoCoin-idtestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html
 
     - name: Upload report
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
-        name: postman-report
-        path: ./postman-reports/html-report.html
+        name: reports
+        path: simpleartifact
