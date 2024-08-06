@@ -1,0 +1,1060 @@
+{
+	"info": {
+		"_postman_id": "215cd23d-f833-4429-b660-6fd15884f5af",
+		"name": "Coingecko Price API Test cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35687268"
+	},
+	"item": [
+		{
+			"name": "Test cases",
+			"item": [
+				{
+					"name": "TC001",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' with price in USD\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.have.property('usd');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC002",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC003",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' with price in USD\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.have.property('usd');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC004",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC005",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 401\", function () {\r",
+									"    pm.response.to.have.status(401);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "invalid-api-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC006",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bvt&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bvt"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC007",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' but empty currency\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=pol",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "pol"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC008",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes valid data for 'bitcoin' with USD value as an integer\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.have.property('usd');\r",
+									"    pm.expect(jsonData.bitcoin.usd).to.be.a('number');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,nonexistentcoin&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin,nonexistentcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC009",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response indicates missing parameter vs_currencies\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error', 'Missing parameter vs_currencies');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC010",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response indicates missing parameter ids\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error', 'Missing parameter ids');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC011",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' with price in USD and ignores extra parameter\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.have.property('usd');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd&extra_param=test",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								},
+								{
+									"key": "extra_param",
+									"value": "test"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC012",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' but empty for invalid vs_currencies\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=123",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": "123"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC013",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is empty\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=&vs_currencies=usd",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": ""
+								},
+								{
+									"key": "vs_currencies",
+									"value": "usd"
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC014",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response includes 'bitcoin' but empty for vs_currencies\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('bitcoin');\r",
+									"    pm.expect(jsonData.bitcoin).to.be.empty;\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 2000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": ""
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC015",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify 500 Internal Server Error\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": null
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				},
+				{
+					"name": "TC016",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify 404 Not Found Error\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"simple",
+								"price"
+							],
+							"query": [
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								},
+								{
+									"key": "vs_currencies",
+									"value": null
+								}
+							]
+						},
+						"description": "Generated from cURL: curl --request GET \\\n     --url 'https://api.coingecko.com/api/v3/simple/price?ids=btcbitcoin&vs_currencies=usd' \\\n     --header 'accept: application/json'"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,433 @@
+{
+	"info": {
+		"_postman_id": "27c9be2d-3085-4c03-996c-4240089c82a1",
+		"name": "Coingecko Coin list API Test cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35687268"
+	},
+	"item": [
+		{
+			"name": "Test cases",
+			"item": [
+				{
+					"name": "TC01",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each object has id, symbol, and name\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    jsonData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('symbol');\r",
+									"        pm.expect(item).to.have.property('name');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"list"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC02",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each object has id, symbol, and name\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    jsonData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('symbol');\r",
+									"        pm.expect(item).to.have.property('name');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"list"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC03",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is present\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/ads",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"ads"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC04",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response is a JSON array\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"    pm.expect(pm.response.json()).to.be.an('array');\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Each object has id, symbol, and name\", function () {\r",
+									"    let jsonData = pm.response.json();\r",
+									"    jsonData.forEach(function(item) {\r",
+									"        pm.expect(item).to.have.property('id');\r",
+									"        pm.expect(item).to.have.property('symbol');\r",
+									"        pm.expect(item).to.have.property('name');\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"list"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC05",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Error message is present\", function () {\r",
+									"    pm.response.to.be.json;\r",
+									"    let jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"list"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC06",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const RATE_LIMIT = 30;\r",
+									"const DELAY_MS = 100; // \r",
+									"let requestCount = 0;\r",
+									"\r",
+									"function sendRequestWithDelay(i) {\r",
+									"    if (i >= RATE_LIMIT + 1) {\r",
+									"        return;\r",
+									"    }\r",
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: 'https://api.coingecko.com/api/v3/coins/list',\r",
+									"        method: 'GET',\r",
+									"        header: {\r",
+									"            'Accept': 'application/json'\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"        requestCount++;\r",
+									"        if (requestCount > RATE_LIMIT) {\r",
+									"            pm.test(\"Status code is 429\", function () {\r",
+									"                pm.expect(res.code).to.equal(429);\r",
+									"            });\r",
+									"\r",
+									"            pm.test(\"Response time is less than 1000ms\", function () {\r",
+									"                pm.expect(res.responseTime).to.be.below(1000);\r",
+									"            });\r",
+									"        }\r",
+									"    });\r",
+									"\r",
+									"    // Schedule the next request\r",
+									"    setTimeout(function() {\r",
+									"        sendRequestWithDelay(i + 1);\r",
+									"    }, DELAY_MS);\r",
+									"}\r",
+									"\r",
+									"// Start the first request\r",
+									"sendRequestWithDelay(0);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/list",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"list"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "bitcoin",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
