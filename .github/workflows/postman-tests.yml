@@ -14,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3  # Updated to latest version
 
     - name: Set up Node.js
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3  # Updated to latest version
       with:
-        node-version: '14'
+        node-version: '20'  # Ensure we are using Node.js 20
 
     - name: Install Newman
       run: npm install -g newman
@@ -29,7 +29,7 @@ jobs:
         newman run ./postman/collections/MyCollection.postman_collection.json -e ./postman/environments/MyEnvironment.postman_environment.json --reporters cli,junit --reporter-junit-export ./postman-reports/junit-report.xml
 
     - name: Archive Test Reports
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3  # Updated to latest version
       with:
         name: postman-reports
         path: ./postman-reports/
