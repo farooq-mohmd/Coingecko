@@ -7,24 +7,23 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-
-     - uses: actions/checkout@v3
-     - name: create dir
-        run: |
-              mkdir simpleartifact
-
-    - name: install Node
+    - name: Checkout repository
       uses: actions/checkout@v3
+
+    - name: Create directory for report
+      run: |
+        mkdir -p simpleartifact
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
       with:
         node-version: '17.x'
 
     - name: Install Newman and htmlextra
       run: |
-        npm install -g newman
         npm install -g newman newman-reporter-htmlextra
 
     - name: Run Postman Collection
