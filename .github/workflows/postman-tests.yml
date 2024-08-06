@@ -33,4 +33,3 @@ jobs:
       with:
         name: postman-reports
         path: ./postman-reports/
-
