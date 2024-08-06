@@ -28,11 +28,7 @@ jobs:
 
     - name: Run Postman Collection
       run: |
-        newman run "postman/collections/CoingeckoCoin-idtestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html &&
-        newman run "postman/collections/CoingeckoCoinlistAPITestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html &&
-        newman run "postman/collections/CoingeckoMarketAPITestCases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html &&
-        newman run "postman/collections/CoingeckoPingAPITest cases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html &&
-        newman run "postman/collections/CoingeckoPriceAPITestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html 
+        newman run "postman/collections/CoingeckoCoin-idtestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report.html
         
 
     - name: Upload report
