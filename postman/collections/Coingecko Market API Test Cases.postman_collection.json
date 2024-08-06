@@ -1,0 +1,518 @@
+{
+	"info": {
+		"_postman_id": "09e90cd9-a7b0-4904-8882-6816843e4216",
+		"name": "Coingecko Market API Test Cases",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35687268"
+	},
+	"item": [
+		{
+			"name": "Test cases",
+			"item": [
+				{
+					"name": "TC01",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify successful response for valid request\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson[0]).to.have.property('id', 'bitcoin');\r",
+									"    pm.expect(responseJson[0]).to.have.property('symbol', 'btc');\r",
+									"    pm.expect(responseJson[0]).to.have.property('current_price');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC02",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify successful response for valid request\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData[0].id).to.eql(\"bitcoin\");\r",
+									"    pm.expect(jsonData[0].symbol).to.eql(\"btc\");\r",
+									"    pm.expect(jsonData[0]).to.have.property(\"current_price\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is below 1000ms\", function () {\r",
+									"    var responseTime = pm.response.responseTime;\r",
+									"    pm.expect(responseTime).to.be.below(1000);\r",
+									"    console.log(\"Response time: \" + responseTime + \"ms\");\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC03",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify response for unsupported currency\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"    pm.response.to.be.json;\r",
+									"    \r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property('error', 'invalid vs_currency');\r",
+									"    \r",
+									"    pm.expect(pm.response.responseTime).to.be.below(2000); // Response time should be less than 2 seconds\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usdr&ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usdr"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC04",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify response for unsupported coin\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('array').that.is.empty;\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoiner",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoiner"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC05",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify response for multiple coins\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson[0]).to.have.property('id', 'bitcoin');\r",
+									"    pm.expect(responseJson[1]).to.have.property('id', 'ethereum');\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin,ethereum",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin,ethereum"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC06",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify response with missing ids\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.be.an('array').that.is.not.empty;\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC07",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify response with incorrect URL\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.have.property('status', 404);\r",
+									"    pm.expect(responseJson).to.have.property('error', 'Not Found');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/apsi/v3/coins/markets?vs_currency=usd&ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"apsi",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "TC08",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Verify incorrect method (POST)\", function () {\r",
+									"    pm.response.to.have.status(404);\r",
+									"    var responseJson = pm.response.json();\r",
+									"    pm.expect(responseJson).to.have.property('error', 'Incorrect path. Please check https://www.coingecko.com/api/');\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "x-cg-demo-api-key",
+								"value": "CG-myU9466Mv71eAG2hpxuswkij",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=bitcoin",
+							"protocol": "https",
+							"host": [
+								"api",
+								"coingecko",
+								"com"
+							],
+							"path": [
+								"api",
+								"v3",
+								"coins",
+								"markets"
+							],
+							"query": [
+								{
+									"key": "vs_currency",
+									"value": "usd"
+								},
+								{
+									"key": "ids",
+									"value": "bitcoin"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
