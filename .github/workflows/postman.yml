@@ -25,6 +25,15 @@ jobs:
       run: |
         npm install -g newman newman-reporter-htmlextra
 
+    - name: Debug file paths
+      run: |
+        echo "Listing current directory:"
+        ls -la
+        echo "Listing postman/collections directory:"
+        ls -la postman/collections
+        echo "Listing postman/environments directory:"
+        ls -la postman/environments
+
     - name: Run Postman Collection 1
       run: |
         newman run "postman/collections/CoingeckoCoin-idtestcases.postman_collection.json" -e "postman/environments/Development.postman_environment.json" -r htmlextra --reporter-htmlextra-export simpleartifact/report-Coin-id.html
